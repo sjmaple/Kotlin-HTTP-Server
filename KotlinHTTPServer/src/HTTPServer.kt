@@ -100,24 +100,24 @@ public class HttpServer(val connect : Socket) : Runnable {
         out.println("Date: " + Date())
         out.println("Content-type: " + contentType)
 
-        if (contentLength > -1)
-        {
-            out.println("Content-length: " + contentLength)
-            out.println()
-        }
-        else
+        if (contentLength == -1)
         {
             out.println()
             out.println("<HTML>")
             out.println("<HEAD><TITLE>" + title + "</TITLE></HEAD>")
             out.println("<BODY>")
         }
+        else
+        {
+            out.println("Content-length: " + contentLength)
+            out.println()
+        }
 
         out.flush()
 
         body()
 
-        if (contentLength > -1)
+        if (contentLength == -1)
         {
             out.println("</BODY>")
             out.println("</HTML>")
