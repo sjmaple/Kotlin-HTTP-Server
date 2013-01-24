@@ -143,7 +143,7 @@ fun main(args : Array<String>)
 
     while (true)
     {
-        var socket = serverConnect.accept()
+        val socket = serverConnect.accept()
         val thread = Thread(HttpServer(socket))
         thread.start()
     }
